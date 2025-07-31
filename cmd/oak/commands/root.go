@@ -15,6 +15,7 @@ import (
 	"github.com/go-go-golems/glazed/pkg/cmds/layers"
 	"github.com/go-go-golems/glazed/pkg/cmds/loaders"
 	"github.com/go-go-golems/glazed/pkg/help"
+	help_cmd "github.com/go-go-golems/glazed/pkg/help/cmd"
 	"github.com/go-go-golems/glazed/pkg/types"
 	cmds2 "github.com/go-go-golems/oak/pkg/cmds"
 	"github.com/spf13/cobra"
@@ -33,7 +34,7 @@ func InitRootCmd(docFS embed.FS) (*help.HelpSystem, error) {
 		return nil, err
 	}
 
-	helpSystem.SetupCobraRootCommand(RootCmd)
+	help_cmd.SetupCobraRootCommand(helpSystem, RootCmd)
 
 	err = clay.InitViper("oak", RootCmd)
 	if err != nil {

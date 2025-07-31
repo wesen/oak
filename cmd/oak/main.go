@@ -57,7 +57,7 @@ func main() {
 			os.Exit(1)
 		}
 
-		cobraCommand, err := cli.BuildCobraCommandFromWriterCommand(writerCommand)
+		cobraCommand, err := cli.BuildCobraCommand(writerCommand)
 		if err != nil {
 			fmt.Printf("Could not build cobra command: %v\n", err)
 			os.Exit(1)
