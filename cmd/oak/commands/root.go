@@ -19,6 +19,7 @@ import (
 	cmds2 "github.com/go-go-golems/oak/pkg/cmds"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+	helpCmd "github.com/go-go-golems/glazed/pkg/help/cmd"
 )
 
 var RootCmd = &cobra.Command{
@@ -33,7 +34,7 @@ func InitRootCmd(docFS embed.FS) (*help.HelpSystem, error) {
 		return nil, err
 	}
 
-	helpSystem.SetupCobraRootCommand(RootCmd)
+	helpCmd.SetupCobraRootCommand(helpSystem, RootCmd)
 
 	err = clay.InitViper("oak", RootCmd)
 	if err != nil {
